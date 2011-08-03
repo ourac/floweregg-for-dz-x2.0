@@ -1,0 +1,24 @@
+<!--{template common/header}-->
+<!--{if $fegglis}-->
+	<h3 class="psth cm">鲜花鸡蛋</h3>
+	<!--{loop $fegglis $fegg}-->
+		<div class="pstl">
+			<div class="psta">$fegg[avatar]</div>
+			<div class="psti">
+				<!--{if $fegg['fromuid']}-->
+				<a href="home.php?mod=space&uid=$fegg[fromuid]" class="xi2 xw1">$fegg[fromuser]</a>
+				<!--{else}-->
+				{lang guest}
+				<!--{/if}-->
+				&nbsp;&nbsp;在$fegg[dateline]&nbsp;&nbsp;<b>$fegg[do]</b>&nbsp;&nbsp;并说：$fegg[feggsay]
+				<!--{if $ifadmindel}-->
+				&nbsp;<span class="xg1"><a href="plugin.php?id=floweregg:fegg&do=del&logid=$fegg[id]&pid=$fegg[pid]" onclick="showWindow('delfegg', this.href);return false;">删除</a></span>
+				<!--{/if}-->
+			</div>
+		</div>
+	<!--{/loop}-->
+<!--{/if}-->
+<!--{if $multi}-->
+<div class="pgs mbm cl">$multi</div>
+<!--{/if}-->
+<!--{template common/footer}-->

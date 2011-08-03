@@ -1,0 +1,22 @@
+<!--{template common/header}-->
+	<h3 class="flb">
+		<em id="return_$_G[gp_handlekey]">确认要删除本条鲜花鸡蛋记录？！</em>
+		<span><a href="javascript:;" onclick="hideWindow('$_G[gp_handlekey]');" class="flbc" title="{lang close}">{lang close}</a></span>
+	</h3>
+	<form method="post" autocomplete="off" id="feggdelform_{$pid}" name="feggdelform_{$pid}" action="plugin.php?id=floweregg:fegg&do=del&logid=$logid&pid=$pid" onsubmit="ajaxpost(this.id, 'return_$_G[gp_handlekey]', null, null, 'feggdelsubmit_btn');">
+		<input type="hidden" name="feggdelsubmit" value="true">
+		<input type="hidden" name="referer" value="{echo dreferer()}">
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<input type="hidden" name="handlekey" value="$_G[gp_handlekey]" />
+		<p class="o pns">
+			<button type="submit" name="feggdelsubmit_btn" id="feggdelsubmit_btn" class="pn pnc" value="true"><strong>确定</strong></button>
+		</p>
+	</form>
+	<script type="text/javascript">
+		function succeedhandle_$_G['gp_handlekey'] (url, message, values) {
+			ajaxget('plugin.php?id=floweregg:fegg&do=getfeelog&pid=' + values['pid'], 'feggdiv_' + values['pid']);
+			hideWindow('$_G[gp_handlekey]');
+			showCreditPrompt();
+		}
+	</script>
+<!--{template common/footer}-->
